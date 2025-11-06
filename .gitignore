@@ -1,16 +1,50 @@
 ### IntelliJ IDEA ###
-.idea
+.idea/
 *.iws
 *.iml
 *.ipr
-.mvn/
 
-logs
-static
-target
-.classpath
-.factorypath
-.project
-.settings
-.settings/
+### Maven ###
+.mvn/
+target/
+logs/
+static/
 static.7z
+
+### Eclipse / Java General ###
+.classpath
+.project
+.factorypath
+.settings/
+.settings
+
+### VSCode ###
+.vscode/
+.history/
+*.code-workspace
+
+### System Files ###
+.DS_Store
+Thumbs.db
+
+### Temporary ###
+*.log
+*.tmp
+*.bak
+*.swp
+
+### OS / Environment ###
+# macOS
+.AppleDouble
+.Spotlight-V100
+.Trashes
+# Windows
+ehthumbs.db
+desktop.ini
+
+### Others ###
+# Build archives
+*.jar
+*.war
+*.zip
+*.7z
