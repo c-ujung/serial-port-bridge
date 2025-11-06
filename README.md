@@ -102,9 +102,9 @@ mvn clean package -DskipTests
 ## 网络部署
 
 ### 公网部署
-1. 将服务端部署到公网服务器
+1. 将服务端部署到设备可访问的公网服务器
 2. 配置防火墙规则
-3. 使用网络穿透工具连接内网设备
+3. 设备分别启动注册使用
 
 ## 文档说明
 
@@ -121,4 +121,5 @@ mvn clean package -DskipTests
 
 ## 许可证
 
-MIT License 
+本项目采用 [MIT License](./LICENSE) 授权。  
+© 2025 247LIKE. 保留署名权。
