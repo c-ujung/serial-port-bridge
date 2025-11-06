@@ -1,0 +1,16 @@
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.mvn/
+
+logs
+static
+target
+.classpath
+.factorypath
+.project
+.settings
+.settings/
+static.7z
