@@ -11,6 +11,10 @@ logs/
 static/
 static.7z
 
+# Maven Shade temporary file
+dependency-reduced-pom.xml
+
+
 ### Eclipse / Java General ###
 .classpath
 .project
