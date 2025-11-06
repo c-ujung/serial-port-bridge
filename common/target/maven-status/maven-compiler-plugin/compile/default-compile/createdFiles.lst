@@ -1,0 +1,7 @@
+de\beiai\serial\common\SerialPortMapping$MappingStatus.class
+de\beiai\serial\common\ConnectionInfo.class
+de\beiai\serial\common\SerialPortConfig.class
+de\beiai\serial\common\SerialPortMapping.class
+de\beiai\serial\common\Message.class
+de\beiai\serial\common\Message$MessageType.class
+de\beiai\serial\common\ConnectionInfo$ConnectionStatus.class

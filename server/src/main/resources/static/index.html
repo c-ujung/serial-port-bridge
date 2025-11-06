@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>串口端口管理器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .status-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #495057;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .info-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .info-label {
+            font-weight: bold;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .info-value {
+            font-size: 16px;
+            color: #333;
+        }
+        .connection-list {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .connection-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+        .connection-item:last-child {
+            border-bottom: none;
+        }
+        .connection-item:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .connection-header {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            padding: 15px;
+        }
+        .btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .btn:hover {
+            background-color: #c82333;
+        }
+        .btn-refresh {
+            background-color: #28a745;
+            margin-bottom: 20px;
+        }
+        .btn-refresh:hover {
+            background-color: #218838;
+        }
+        .port-list {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .mapping-section {
+            margin-top: 20px;
+        }
+        .mapping-item {
+            background-color: #e7f3ff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border-left: 3px solid #007bff;
+        }
+        .status-online {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .status-offline {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>串口端口管理器</h1>
+        
+        <button class="btn btn-refresh" onclick="refreshData()">刷新数据</button>
+        
+        <div class="status-section">
+            <div class="section-title">系统状态</div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-label">节点端数量</div>
+                    <div class="info-value" id="nodeCount">0</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">客户端数量</div>
+                    <div class="info-value" id="clientCount">0</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">活跃配对</div>
+                    <div class="info-value" id="pairingCount">0</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-label">串口映射</div>
+                    <div class="info-value" id="mappingCount">0</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <div class="section-title">节点端列表</div>
+            <div class="connection-list">
+                <div class="connection-item connection-header">
+                    <div>节点ID</div>
+                    <div>名称</div>
+                    <div>状态</div>
+                    <div>操作</div>
+                </div>
+                <div id="nodeList">
+                    <!-- 节点列表将在这里动态生成 -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <div class="section-title">客户端列表</div>
+            <div class="connection-list">
+                <div class="connection-item connection-header">
+                    <div>客户端ID</div>
+                    <div>名称</div>
+                    <div>状态</div>
+                    <div>操作</div>
+                </div>
+                <div id="clientList">
+                    <!-- 客户端列表将在这里动态生成 -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <div class="section-title">配对信息</div>
+            <div id="pairingList">
+                <!-- 配对信息将在这里动态生成 -->
+            </div>
+        </div>
+        
+        <div class="status-section">
+            <div class="section-title">串口映射信息</div>
+            <div id="mappingList">
+                <!-- 串口映射信息将在这里动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function refreshData() {
+            fetch('/api/status')
+                .then(response => response.json())
+                .then(data => {
+                    updateSystemStatus(data);
+                });
+            
+            fetch('/api/nodes')
+                .then(response => response.json())
+                .then(data => {
+                    updateNodeList(data);
+                });
+            
+            fetch('/api/clients')
+                .then(response => response.json())
+                .then(data => {
+                    updateClientList(data);
+                });
+            
+            fetch('/api/pairings')
+                .then(response => response.json())
+                .then(data => {
+                    updatePairingList(data);
+                });
+            
+            fetch('/api/mappings')
+                .then(response => response.json())
+                .then(data => {
+                    updateMappingList(data);
+                });
+        }
+        
+        function updateSystemStatus(data) {
+            document.getElementById('nodeCount').textContent = data.nodeCount || 0;
+            document.getElementById('clientCount').textContent = data.clientCount || 0;
+            document.getElementById('pairingCount').textContent = data.pairingCount || 0;
+            document.getElementById('mappingCount').textContent = data.mappingCount || 0;
+        }
+        
+        function updateNodeList(nodes) {
+            const nodeList = document.getElementById('nodeList');
+            nodeList.innerHTML = '';
+            
+            if (!nodes || Object.keys(nodes).length === 0) {
+                nodeList.innerHTML = '<div class="connection-item"><div colspan="4">暂无节点端连接</div></div>';
+                return;
+            }
+            
+            Object.entries(nodes).forEach(([id, info]) => {
+                const nodeItem = document.createElement('div');
+                nodeItem.className = 'connection-item';
+                
+                // 根据ConnectionStatus枚举值判断状态
+                let status, statusClass;
+                if (!info.status) {
+                    status = '状态未知';
+                    statusClass = 'status-offline';
+                } else {
+                    switch(info.status) {
+                        case 'CONNECTED':
+                            status = '已连接';
+                            statusClass = 'status-online';
+                            break;
+                        case 'PAIRED':
+                            status = '已配对';
+                            statusClass = 'status-online';
+                            break;
+                        case 'DISCONNECTED':
+                            status = '已断开';
+                            statusClass = 'status-offline';
+                            break;
+                        case 'ERROR':
+                            status = '错误';
+                            statusClass = 'status-offline';
+                            break;
+                        default:
+                            status = '未知状态: ' + info.status;
+                            statusClass = 'status-offline';
+                    }
+                }
+                
+                const ports = info.availablePorts && info.availablePorts.length > 0 
+                    ? info.availablePorts.join(', ') 
+                    : '无可用串口';
+                
+                nodeItem.innerHTML = `
+                    <div>${id}</div>
+                    <div>${info.name || '未知'}</div>
+                    <div class="${statusClass}">${status}</div>
+                    <div>
+                        <button class="btn" onclick="disconnect('${id}')">断开</button>
+                    </div>
+                `;
+                
+                // 添加串口信息
+                if (info.availablePorts && info.availablePorts.length > 0) {
+                    const portInfo = document.createElement('div');
+                    portInfo.className = 'port-list';
+                    portInfo.textContent = `可用串口: ${ports}`;
+                    nodeItem.appendChild(portInfo);
+                }
+                
+                nodeList.appendChild(nodeItem);
+            });
+        }
+        
+        function updateClientList(clients) {
+            const clientList = document.getElementById('clientList');
+            clientList.innerHTML = '';
+            
+            if (!clients || Object.keys(clients).length === 0) {
+                clientList.innerHTML = '<div class="connection-item"><div colspan="4">暂无客户端连接</div></div>';
+                return;
+            }
+            
+            Object.entries(clients).forEach(([id, info]) => {
+                const clientItem = document.createElement('div');
+                clientItem.className = 'connection-item';
+                
+                // 根据ConnectionStatus枚举值判断状态
+                let status, statusClass;
+                if (!info.status) {
+                    status = '状态未知';
+                    statusClass = 'status-offline';
+                } else {
+                    switch(info.status) {
+                        case 'CONNECTED':
+                            status = '已连接';
+                            statusClass = 'status-online';
+                            break;
+                        case 'PAIRED':
+                            status = '已配对';
+                            statusClass = 'status-online';
+                            break;
+                        case 'DISCONNECTED':
+                            status = '已断开';
+                            statusClass = 'status-offline';
+                            break;
+                        case 'ERROR':
+                            status = '错误';
+                            statusClass = 'status-offline';
+                            break;
+                        default:
+                            status = '未知状态: ' + info.status;
+                            statusClass = 'status-offline';
+                    }
+                }
+                
+                clientItem.innerHTML = `
+                    <div>${id}</div>
+                    <div>${info.name || '未知'}</div>
+                    <div class="${statusClass}">${status}</div>
+                    <div>
+                        <button class="btn" onclick="disconnect('${id}')">断开</button>
+                    </div>
+                `;
+                
+                clientList.appendChild(clientItem);
+            });
+        }
+        
+        function updatePairingList(pairings) {
+            const pairingList = document.getElementById('pairingList');
+            pairingList.innerHTML = '';
+            
+            if (Object.keys(pairings).length === 0) {
+                pairingList.innerHTML = '<p>暂无配对信息</p>';
+                return;
+            }
+            
+            Object.entries(pairings).forEach(([nodeId, clientIds]) => {
+                const pairingItem = document.createElement('div');
+                pairingItem.className = 'mapping-item';
+                pairingItem.innerHTML = `
+                    <strong>节点 ${nodeId}</strong> 配对客户端: ${Array.from(clientIds).join(', ')}
+                `;
+                pairingList.appendChild(pairingItem);
+            });
+        }
+        
+        function updateMappingList(mappings) {
+            const mappingList = document.getElementById('mappingList');
+            console.log('mappingList', mappingList)
+            mappingList.innerHTML = '';
+
+            if (Object.keys(mappings).length === 0) {
+                mappingList.innerHTML = '<p>暂无串口映射信息</p>';
+                return;
+            }
+
+            Object.entries(mappings).forEach(([nodeId, mappingDataList]) => {
+                mappingDataList.forEach(mapping => {
+                    const mappingItem = document.createElement('div');
+                    mappingItem.className = 'mapping-item';
+                    mappingItem.innerHTML = `
+                        <strong>节点 ${nodeId}</strong><br>
+                        物理串口: ${mapping.nodePortName} -> 虚拟串口: ${mapping.clientPortName}<br>
+                        波特率: ${mapping.baudRate} | 状态: ${mapping.status}
+                    `;
+                    mappingList.appendChild(mappingItem);
+                });
+            });
+        }
+        
+        function disconnect(connectionId) {
+            if (confirm('确定要断开此连接吗？')) {
+                fetch(`/api/disconnect/${connectionId}`, {
+                    method: 'POST'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('连接已断开');
+                        refreshData();
+                    } else {
+                        alert('断开连接失败');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('断开连接失败');
+                });
+            }
+        }
+        
+        // 页面加载时自动刷新数据
+        document.addEventListener('DOMContentLoaded', function() {
+            refreshData();
+        });
+        
+        // 每30秒自动刷新一次
+        setInterval(refreshData, 30000);
+    </script>
+</body>
+</html> 

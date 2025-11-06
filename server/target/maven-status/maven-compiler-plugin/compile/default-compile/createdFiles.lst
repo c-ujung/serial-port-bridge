@@ -1,0 +1,8 @@
+de\beiai\serial\server\network\TcpServer.class
+de\beiai\serial\server\controller\WebController.class
+de\beiai\serial\server\SerialPortServerApplication.class
+de\beiai\serial\server\network\TcpServer$1.class
+de\beiai\serial\server\network\TcpServerHandler.class
+de\beiai\serial\server\service\ConnectionManager.class
+de\beiai\serial\server\service\ConnectionManager$1.class
+de\beiai\serial\server\config\ServerConfig.class

@@ -1,0 +1,7 @@
+de\beiai\serial\client\network\ClientNetworkHandler.class
+de\beiai\serial\client\network\ClientNetworkManager$2.class
+de\beiai\serial\client\service\VirtualSerialPortService.class
+de\beiai\serial\client\service\VirtualSerialPortService$VirtualSerialPortInfo.class
+de\beiai\serial\client\network\ClientNetworkManager$1.class
+de\beiai\serial\client\network\ClientNetworkManager.class
+de\beiai\serial\client\SerialPortClient.class

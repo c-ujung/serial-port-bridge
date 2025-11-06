@@ -1,0 +1,39 @@
+2025-11-06 17:48:15.480 [main] INFO  de.beiai.serial.node.SerialPortNode - 启动串口节点端: Node-17608
+2025-11-06 17:48:15.487 [main] INFO  de.beiai.serial.node.SerialPortNode - 连接服务器: localhost:38888
+2025-11-06 17:48:15.668 [main] INFO  d.b.s.node.service.SerialPortService - 节点端串口唯一应用ID：EFOAI_SerialPort_Node_1986370033729916928
+2025-11-06 17:48:16.238 [nioEventLoopGroup-2-1] INFO  d.b.s.node.network.NodeClientHandler - 节点端连接建立: 127.0.0.1:38888
+2025-11-06 17:48:16.289 [main] INFO  d.b.serial.node.network.NodeClient - 节点端连接服务器成功: localhost:38888
+2025-11-06 17:48:16.328 [nioEventLoopGroup-2-1] DEBUG d.b.s.node.network.NodeClientHandler - 收到消息: {"type":"CONNECT_ACK","messageId":"2b2c74fb-3788-47a8-83a3-f8fd3ec9bd0e","senderId":"SERVER","receiverId":"127.0.0.1:14039","timestamp":1762422496308}
+2025-11-06 17:48:16.329 [nioEventLoopGroup-2-1] INFO  d.b.serial.node.network.NodeClient - 连接确认收到
+2025-11-06 17:48:16.414 [main] INFO  d.b.s.node.service.SerialPortService - 启动时自动推送串口列表到服务端: COM10,COM6,COM11,COM7,COM9,COM5
+2025-11-06 17:48:16.416 [main] INFO  d.b.s.node.service.SerialPortService - 串口服务已启动
+2025-11-06 17:48:21.425 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM10
+2025-11-06 17:48:21.425 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM6
+2025-11-06 17:48:21.425 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM11
+2025-11-06 17:48:21.425 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM7
+2025-11-06 17:48:21.425 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM9
+2025-11-06 17:48:21.425 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM5
+2025-11-06 17:48:21.437 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 串口列表已更新到服务端: COM10,COM6,COM11,COM7,COM9,COM5
+2025-11-06 17:48:26.293 [nioEventLoopGroup-2-1] DEBUG d.b.s.node.network.NodeClientHandler - 收到消息: {"type":"HEARTBEAT_ACK","messageId":"984d18e5-1740-4e30-9aae-3b4ebab29f05","senderId":"SERVER","receiverId":"127.0.0.1:14039","timestamp":1762422506292}
+2025-11-06 17:48:26.450 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM10
+2025-11-06 17:48:26.450 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM6
+2025-11-06 17:48:26.450 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM11
+2025-11-06 17:48:26.450 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM7
+2025-11-06 17:48:26.450 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM9
+2025-11-06 17:48:26.450 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM5
+2025-11-06 17:48:26.461 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 串口列表已更新到服务端: COM10,COM6,COM11,COM7,COM9,COM5
+2025-11-06 17:48:31.470 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM10
+2025-11-06 17:48:31.470 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM6
+2025-11-06 17:48:31.470 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM11
+2025-11-06 17:48:31.470 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM7
+2025-11-06 17:48:31.470 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM9
+2025-11-06 17:48:31.470 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM5
+2025-11-06 17:48:31.480 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 串口列表已更新到服务端: COM10,COM6,COM11,COM7,COM9,COM5
+2025-11-06 17:48:36.493 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM10
+2025-11-06 17:48:36.493 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM6
+2025-11-06 17:48:36.493 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM11
+2025-11-06 17:48:36.493 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM7
+2025-11-06 17:48:36.493 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM9
+2025-11-06 17:48:36.493 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 检测到新增串口: COM5
+2025-11-06 17:48:36.502 [Thread-2] INFO  d.b.s.node.service.SerialPortService - 串口列表已更新到服务端: COM10,COM6,COM11,COM7,COM9,COM5
+2025-11-06 17:48:37.527 [Thread-0] INFO  d.b.s.node.service.SerialPortService - 节点端全局资源已释放

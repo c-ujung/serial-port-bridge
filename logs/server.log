@@ -1,0 +1,69 @@
+2025-11-06 17:46:10.692 [main] INFO  d.b.s.s.SerialPortServerApplication - Starting SerialPortServerApplication using Java 17.0.1 with PID 35780 (C:\code\test\serial_port_manager\server\target\classes started by 17608 in C:\code\test\serial_port_manager)
+2025-11-06 17:46:10.696 [main] DEBUG d.b.s.s.SerialPortServerApplication - Running with Spring Boot v3.2.5, Spring v6.1.6
+2025-11-06 17:46:10.698 [main] INFO  d.b.s.s.SerialPortServerApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-06 17:46:11.464 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 38080 (http)
+2025-11-06 17:46:11.472 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-38080"]
+2025-11-06 17:46:11.474 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-06 17:46:11.474 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2025-11-06 17:46:11.521 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-06 17:46:11.522 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 779 ms
+2025-11-06 17:46:11.849 [main] INFO  d.b.serial.server.network.TcpServer - TCP server started on port 38888
+2025-11-06 17:46:11.881 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2025-11-06 17:46:12.058 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-38080"]
+2025-11-06 17:46:12.066 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 38080 (http) with context path ''
+2025-11-06 17:46:12.074 [main] INFO  d.b.s.s.SerialPortServerApplication - Started SerialPortServerApplication in 1.925 seconds (process running for 2.64)
+2025-11-06 17:47:52.749 [nioEventLoopGroup-3-1] INFO  d.b.s.s.network.TcpServerHandler - 客户端连接: 127.0.0.1:13980
+2025-11-06 17:47:52.896 [nioEventLoopGroup-3-1] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"CONNECT","messageId":"5fc8ed37-848f-4177-a3bd-52b8f5897dde","content":"CLIENT","data":[67,108,105,101,110,116,45,49,55,54,48,56],"timestamp":1762422472737}
+2025-11-06 17:47:52.903 [nioEventLoopGroup-3-1] INFO  d.b.s.s.service.ConnectionManager - 客户端连接成功: Client-17608 (CLIENT)
+2025-11-06 17:48:02.809 [nioEventLoopGroup-3-1] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"HEARTBEAT","messageId":"87c0609c-2804-42d4-9efd-b1a3be220dae","senderId":"127.0.0.1:38888","timestamp":1762422482807}
+2025-11-06 17:48:16.236 [nioEventLoopGroup-3-2] INFO  d.b.s.s.network.TcpServerHandler - 客户端连接: 127.0.0.1:14039
+2025-11-06 17:48:16.305 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"CONNECT","messageId":"3c123b86-83bc-49e3-9ff2-b8fbd4d0750b","content":"NODE","data":[78,111,100,101,45,49,55,54,48,56],"timestamp":1762422496237}
+2025-11-06 17:48:16.309 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 客户端连接成功: Node-17608 (NODE)
+2025-11-06 17:48:16.416 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"PORT_LIST_UPDATE","messageId":"24d2b6ee-6f19-428f-8ad6-324ecebb9542","senderId":"127.0.0.1:38888","data":[67,79,77,49,48,44,67,79,77,54,44,67,79,77,49,49,44,67,79,77,55,44,67,79,77,57,44,67,79,77,53],"timestamp":1762422496414}
+2025-11-06 17:48:16.416 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 节点端 Node-17608 串口列表更新: [COM11, COM10, COM9, COM7, COM6, COM5]
+2025-11-06 17:48:21.439 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"PORT_LIST_UPDATE","messageId":"5b0f08de-b410-471f-bac7-c983aa9f74c4","senderId":"127.0.0.1:38888","data":[67,79,77,49,48,44,67,79,77,54,44,67,79,77,49,49,44,67,79,77,55,44,67,79,77,57,44,67,79,77,53],"timestamp":1762422501437}
+2025-11-06 17:48:21.439 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 节点端 Node-17608 串口列表更新: [COM11, COM10, COM9, COM7, COM6, COM5]
+2025-11-06 17:48:26.292 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"HEARTBEAT","messageId":"6891f559-59b3-49c1-98cb-c67432008a8b","senderId":"127.0.0.1:38888","timestamp":1762422506291}
+2025-11-06 17:48:26.462 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"PORT_LIST_UPDATE","messageId":"ed646fb0-ad85-422f-9f00-ba9422668f85","senderId":"127.0.0.1:38888","data":[67,79,77,49,48,44,67,79,77,54,44,67,79,77,49,49,44,67,79,77,55,44,67,79,77,57,44,67,79,77,53],"timestamp":1762422506460}
+2025-11-06 17:48:26.462 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 节点端 Node-17608 串口列表更新: [COM11, COM10, COM9, COM7, COM6, COM5]
+2025-11-06 17:48:31.481 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"PORT_LIST_UPDATE","messageId":"da23fef3-7920-473e-bf67-48dd34096650","senderId":"127.0.0.1:38888","data":[67,79,77,49,48,44,67,79,77,54,44,67,79,77,49,49,44,67,79,77,55,44,67,79,77,57,44,67,79,77,53],"timestamp":1762422511479}
+2025-11-06 17:48:31.481 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 节点端 Node-17608 串口列表更新: [COM11, COM10, COM9, COM7, COM6, COM5]
+2025-11-06 17:48:32.808 [nioEventLoopGroup-3-1] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"HEARTBEAT","messageId":"7a0082da-7a93-4c9a-9011-f5fcb95c9944","senderId":"127.0.0.1:38888","timestamp":1762422512808}
+2025-11-06 17:48:36.503 [nioEventLoopGroup-3-2] DEBUG d.b.s.s.network.TcpServerHandler - 收到消息: {"type":"PORT_LIST_UPDATE","messageId":"c8073d34-8ffa-420b-abca-f7161f21f47c","senderId":"127.0.0.1:38888","data":[67,79,77,49,48,44,67,79,77,54,44,67,79,77,49,49,44,67,79,77,55,44,67,79,77,57,44,67,79,77,53],"timestamp":1762422516502}
+2025-11-06 17:48:36.503 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 节点端 Node-17608 串口列表更新: [COM11, COM10, COM9, COM7, COM6, COM5]
+2025-11-06 17:48:37.843 [nioEventLoopGroup-3-1] ERROR d.b.s.s.network.TcpServerHandler - TCP连接异常
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:255)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-11-06 17:48:37.846 [nioEventLoopGroup-3-1] INFO  d.b.s.s.network.TcpServerHandler - 客户端断开连接: 127.0.0.1:13980
+2025-11-06 17:48:37.846 [nioEventLoopGroup-3-1] INFO  d.b.s.s.service.ConnectionManager - 连接已移除: Client-17608
+2025-11-06 17:48:37.868 [nioEventLoopGroup-3-2] ERROR d.b.s.s.network.TcpServerHandler - TCP连接异常
+java.net.SocketException: Connection reset
+	at java.base/sun.nio.ch.SocketChannelImpl.throwConnectionReset(SocketChannelImpl.java:394)
+	at java.base/sun.nio.ch.SocketChannelImpl.read(SocketChannelImpl.java:426)
+	at io.netty.buffer.PooledByteBuf.setBytes(PooledByteBuf.java:255)
+	at io.netty.buffer.AbstractByteBuf.writeBytes(AbstractByteBuf.java:1132)
+	at io.netty.channel.socket.nio.NioSocketChannel.doReadBytes(NioSocketChannel.java:357)
+	at io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:151)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:788)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:724)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:997)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2025-11-06 17:48:37.868 [nioEventLoopGroup-3-2] INFO  d.b.s.s.network.TcpServerHandler - 客户端断开连接: 127.0.0.1:14039
+2025-11-06 17:48:37.868 [nioEventLoopGroup-3-2] INFO  d.b.s.s.service.ConnectionManager - 连接已移除: Node-17608

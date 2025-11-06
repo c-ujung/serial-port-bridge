@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  serial-port-server:
+    image: eclipse-temurin:17-jre-jammy
+    container_name: serial-port-server
+    ports:
+      - "38888:38888"  # 鏈嶅姟绔疶CP绔彛
+      - "38080:38080"    # Web绠＄悊鐣岄潰绔彛
+      - "38889:38889"    # WebSocket绔彛
+    volumes:
+      - ./server-1.0.0.jar:/app/server.jar
+      - ./logs:/app/logs
+      - ./config:/app/config
+    working_dir: /app
+    command: >
+      java -Xms512m -Xmx1024m
+      -Dspring.profiles.active=prod
+      -Dlogging.file.path=/app/logs
+      -Dlogging.level.de.beiai.serial=DEBUG
+      -jar server.jar
+    environment:
+      - JAVA_OPTS=-Dfile.encoding=UTF-8
+      - TZ=Asia/Shanghai
+    restart: unless-stopped
+    networks:
+      - serial-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:38080/api/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  serial-network:
+    driver: bridge
+
+volumes:
+  logs:
+    driver: local
+  config:
+    driver: local
